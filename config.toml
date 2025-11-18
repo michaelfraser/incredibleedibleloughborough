@@ -1,7 +1,12 @@
 baseURL = 'https://www.incredibleedibleloughborough.org/'
 languageCode = 'en-gb'
 title = 'Incredible Edible Loughborough'
+
+[params]
+  shortTitle = "IEL"
+  
 disableKinds = ['taxonomy', 'term']
+ignoreLogs = ['warning-goldmark-raw-html']
 
 [menu]
   [[menu.main]]
