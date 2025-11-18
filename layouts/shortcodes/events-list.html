@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+
+<div class="col-12 col-md-8 col-lg-6">
+    <h1>Events</h1>
+    {{ $events := where site.AllPages "Section" "events" }}
+    {{ $sorted := sort $events ".Params.event_date" "desc" }}
+    {{ $scratch := newScratch }}
+    {{ range $index, $p := $sorted }}
+    {{ $date := $p.Params.event_date | time.AsTime }}
+    {{ $year := $date.Year }}
+    {{ $currentYear := now.Format "2006"}}
+
+    {{/* When year changes: close previous table (if any), set new year and start a new table */}}
+    {{ if ne ($scratch.Get "lastYear") $year }}
+    {{ if gt ($scratch.Get "lastYear") 0 }}
+    </tbody>
+    </table>
+    {{ end }}
+    {{ $scratch.Set "lastYear" $year }}
+    {{ if ne (int $year) (int $currentYear) }}
+    <h2>{{ $year }} Events</h2>
+    {{ end }}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Event</th>
+            </tr>
+        </thead>
+        <tbody>
+    {{ end }}
+
+    <tr>
+        <td>
+            {{ $date.Day }}{{ if eq $date.Day 1 }}st{{ else if eq $date.Day 2 }}nd{{ else if eq $date.Day 3 }}rd{{ else }}th{{ end }} {{ $date | dateFormat "January" }}
+        </td>
+        <td>
+            <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+        </td>
+    </tr>
+
+    {{/* If this is the last item in the range, close the table */}}
+    {{ if eq (add $index 1) (len $sorted) }}
+    </tbody>
+    </table>
+    {{ end }}
+    {{ end }}
+</div>
+</div>
