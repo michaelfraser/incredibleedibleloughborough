@@ -1,0 +1,36 @@
+{{/* Shortcode: gardens
+   Renders garden entries from data/gardens.toml
+*/}}
+{{- $gardens := site.Data.gardens.gardens -}}
+{{- if $gardens -}}
+{{- range $index, $g := $gardens }}
+<hr>
+{{- if modBool $index 2 }}
+{{/* Odd index: text left, image right */}}
+<div class="row align-items-top">
+    <div class="col-md-6">
+        <h2>Garden {{ add $index 1 }}</h2>
+        <h3>{{ $g.name }}</h3>
+        <p>{{ $g.description }}</p>
+        <a class="btn btn-secondary w-25" href="{{ $g.map_url }}" target="_self" role="button">MAP</a>
+    </div>
+    <div class="col-md-6">
+        <img src="{{ $g.image }}" alt="{{ $g.name }}" title="{{ $g.name }}" class="img-fluid w-100">
+    </div>
+</div>
+{{- else }}
+{{/* Even index: image left, text right */}}
+<div class="row align-items-top">
+    <div class="col-md-6">
+        <img src="{{ $g.image }}" alt="{{ $g.name }}" title="{{ $g.name }}" class="img-fluid w-100">
+    </div>
+    <div class="col-md-6">
+        <h2>Garden {{ add $index 1 }}</h2>
+        <h3>{{ $g.name }}</h3>
+        <p>{{ $g.description }}</p>
+        <a class="btn btn-secondary w-25" href="{{ $g.map_url }}" target="_self" role="button">MAP</a>
+    </div>
+</div>
+{{- end }}
+{{- end -}}
+{{- end -}}
