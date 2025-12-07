@@ -9,5 +9,8 @@ build: ## Build project
 netlify: ## Build and deploy to Netlify
 	rm -rf public && netlify deploy --prod
 
+netlify-staging: ## Build and deploy to Netlify Staging environment
+	rm -rf public && netlify deploy --alias=staging
+
 start: ## start
 	hugo server -D
