@@ -18,17 +18,14 @@
     {{ partial "header.html" (dict "context" . "menus" .Site.Menus.main "imageTheme" "image-theme" "svgFill" "white"
     "navbar" "navbar-light" "mainClass" "") }}
     {{ else }}
-    {{ partial "header.html" (dict "context" . "menus" .Site.Menus.main "imageTheme" "" "svgFill" "rgb(84, 180, 53)"
+    {{ partial "header.html" (dict "context" . "menus" .Site.Menus.main "imageTheme" "" "svgFill" "white"
     "navbar" "navbar-dark" "mainClass" "internal-main") }}
     {{ end }}
 
     {{ block "main" . }}{{ end }}
     </main>
-    <footer class="text-center py-4">
-        <hr>
-        <a class="no-underline" href="/privacy-policy">Privacy Policy</a> | Copyright &copy; {{ now.Format "2006" }}
-    </footer>
-    <!-- <script src="/js/custom.js"></script> -->
+    {{ partial "footer.html" . }}
+    <!-- <script src="/js/site.js"></script> -->
 </body>
 
 </html>
