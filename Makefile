@@ -8,3 +8,6 @@ build: ## Build project
 
 netlify: ## Build and deploy to Netlify
 	rm -rf public && netlify deploy --prod
+
+start: ## start
+	hugo server -D
