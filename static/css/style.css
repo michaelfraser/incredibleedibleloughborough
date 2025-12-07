@@ -4,31 +4,61 @@
     box-sizing: border-box;
 }
 
-/* Site theme variables */
 :root {
-    --site-primary: #2c5f2d;
-    /* map Bootstrap's primary to our site variable so Bootstrap utilities (bg-primary etc.) use it */
+    --site-primary: rgb(84, 180, 53);
     --bs-primary: var(--site-primary);
+    /* --text-primary: var(--site-primary); */
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Montserrat, sans-serif;
     line-height: 1.6;
     color: #333;
+    /* background-color: #e1be72; */
 }
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+    color: white;
+    /* padding: 1rem; */
+}
+
+main {
+    position: relative;
+    z-index: 100;
+    /* Lower than header but above navpic */
+    margin-top: -800px;
+    /* Adjust this value based on how much overlap you want */
+    /* You might want to add padding-top to prevent content from hiding under header */
+    padding-top: 100px;
+    /* Adjust based on your header height */
+}
+
+main.internal-main {
+    margin-top: 0px;
+}
+
 
 h2 {
     color: var(--site-primary);
     margin-bottom: 1rem;
 }
 
-header {
+.navbar-light {
+    background: none;
+}
+
+.navbar-dark {
+    background: var(--site-primary);
     color: white;
-    padding: 1rem;
 }
 
 nav {
-    background: var(--site-primary);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,6 +70,10 @@ nav ul {
     display: flex;
     list-style: none;
     gap: 2rem;
+}
+
+.nav-link {
+    color: white;
 }
 
 nav a {
@@ -70,9 +104,9 @@ nav a {
 }
 
 .social {
-    background: #e8f5e9;
+    /* background: #e8f5e9; */
     color: white;
-    padding: 1rem;
+    padding-right: 1rem;
     text-align: right;
     display: flex;
     justify-content: right;
@@ -93,4 +127,136 @@ nav a {
     /* nudge to visually center with text */
     margin-right: 0.5em;
     display: inline-block;
+}
+
+.icon-container {
+    text-align: center;
+}
+
+svg {
+    height: 1.2em;
+    width: auto;
+    vertical-align: -0.125em;
+    /* nudge to visually center with text */
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    display: inline-block;
+}
+
+path {
+    transition: fill 0.3s;
+}
+
+a:hover path {
+    fill: var(--site-primary);
+}
+
+.iel-logo {
+    height: 40px;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+footer {
+    color: var(--site-primary);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: var(--site-primary);
+    text-decoration: none;
+}
+
+.image-theme {
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/assets/home.jpg');
+    background-size: cover;
+    background-position: top;
+    background-color: #e1be72;
+    min-height: 100vh;
+}
+
+.tt {
+    padding-top: 500px;
+}
+
+.btn-primary {
+    background-color: var(--site-primary);
+    border-color: var(--site-primary);
+}
+
+.btn-secondary {
+    background-color: white;
+    border-color: var(--site-primary);
+    color: var(--site-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--site-primary);
+}
+
+.navbar-collapse .nav-link {
+    color: white !important;
+}
+
+.navbar-collapse .nav-link:hover {
+    color: #666 !important;
+    /* Optional: darker gray on hover */
+}
+
+/* Optional: Add rounded corners and shadow for better appearance */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        margin-top: 0.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: white !important;
+
+    }
+
+    .navbar-collapse .nav-link {
+        color: black !important;
+    }
+}
+
+
+/* Position the close button in the top right of the menu */
+.navbar-collapse {
+    position: relative;
+}
+
+.btn-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1001;
+}
+
+/* Adjust menu padding to make room for close button */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        padding-top: 3rem;
+        /* Make room for the X button */
+    }
+}
+
+/* Make the navbar toggler icon white */
+.navbar-toggler {
+    border-color: white;
+    /* Optional: white border */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Optional: Change focus/hover state */
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    border-color: white;
+    box-shadow: none;
+    /* Remove default Bootstrap focus shadow */
 }
