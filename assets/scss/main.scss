@@ -1,0 +1,195 @@
+@import 'footer';
+@import 'fonts';
+@import 'nav';
+@import 'variables';
+
+@media only screen {
+    @-ms-viewport {
+        width: device-width;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    color: $secondary-color;
+    font-family: $font-primary;
+    font-size: 1.59vw;
+    font-weight: 300;
+    font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    letter-spacing: 0;
+}
+
+@media screen and (min-width: 1260px) {
+
+    html,
+    body {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 890px) {
+
+    html,
+    body {
+        font-size: 14px;
+    }
+}
+
+@media print {
+
+    html,
+    body {
+        font-size: 14px;
+    }
+}
+
+@media projection {
+
+    html,
+    body {
+        font-size: 10px;
+    }
+}
+
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+    color: white;
+    /* padding: 1rem; */
+}
+
+main {
+    position: relative;
+    z-index: 100;
+    /* Lower than header but above navpic */
+    margin-top: -800px;
+    /* Adjust this value based on how much overlap you want */
+    /* You might want to add padding-top to prevent content from hiding under header */
+    padding-top: 100px;
+    /* Adjust based on your header height */
+}
+
+main.internal-main {
+    margin-top: 0px;
+}
+
+
+h2 {
+    color: $primary-color;
+    margin-bottom: 1rem;
+}
+
+
+svg {
+    height: 1.2em;
+    width: auto;
+    vertical-align: -0.125em;
+    /* nudge to visually center with text */
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    display: inline-block;
+}
+
+path {
+    transition: fill 0.3s;
+}
+
+a:hover path {
+    fill: #4c7b35
+}
+
+.iel-logo {
+    height: 80px;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.image-theme {
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/assets/home.jpg');
+    background-size: cover;
+    background-position: top;
+    min-height: 100vh;
+}
+
+.tt {
+    padding-top: 500px;
+}
+
+.btn-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+
+.btn-secondary {
+    background-color: white;
+    border-color: $primary-color;
+    color: $primary-color;
+}
+
+.btn-secondary:hover {
+    background-color: $primary-color;
+}
+
+a {
+    color: #4c7b35 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+}
+
+@media projection {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: bold;
+    }
+}
+
+body {
+    background: white
+}
+
+@media screen {
+    body {
+        background: #f6f4f0;
+    }
+}
+
+
+@media print {
+    body {
+        background: white;
+    }
+}
+
+@media projection {
+    body {
+        background: white;
+    }
+}
