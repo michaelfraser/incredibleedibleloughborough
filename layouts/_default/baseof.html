@@ -1,5 +1,5 @@
-{{ $style := resources.Get "scss/main.scss" | css.Sass | resources.Minify | resources.Fingerprint }}
-{{ $js := resources.Get "js/site.js" | js.Build | resources.Minify | resources.Fingerprint }}
+{{ $style := resources.Get "scss/main.scss" | css.Sass | resources.Minify | resources.Fingerprint "md5" }}
+{{ $js := resources.Get "js/site.js" | js.Build | resources.Minify | resources.Fingerprint "md5" }}
 
 <!DOCTYPE html>
 <html lang="en">
