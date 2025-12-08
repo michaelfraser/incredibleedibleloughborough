@@ -4,7 +4,7 @@ date: 2025-12-07
 draft: false
 ---
 
-# About us
+## About us
 
 Incredible Edible grows food in urban settings, open to the public.  The organisation started in 1995 and in Loughborough we started in 2022. We now have seven gardens growing fruit and veg throughout the year.  Unlike other community gardens they are always open to walk in and help yourself to free food. 
 
