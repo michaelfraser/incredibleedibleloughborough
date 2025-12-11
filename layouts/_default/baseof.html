@@ -27,13 +27,13 @@
             --bg-image: url('{{ $large.RelPermalink }}');
         }
 
-        @media (max-width: 1200px) {
+        @media (max-width: var(--xl)) {
             .image-theme {
                 --bg-image: url('{{ $medium.RelPermalink }}');
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: var(--md)) {
             .image-theme {
                 --bg-image: url('{{ $small.RelPermalink }}');
             }
