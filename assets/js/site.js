@@ -1,6 +1,6 @@
 (function() {
   document.documentElement.classList.add('has-js');
-  const topButton = document.querySelector('a.top');
+  const topButton = document.querySelector('a.back-to-top');
   if (!topButton) {
     console.error('Back to top button not found');
     return;
