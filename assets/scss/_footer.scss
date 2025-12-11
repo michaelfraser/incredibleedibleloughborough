@@ -3,7 +3,7 @@
 footer {
   color: $primary-color;
   text-align: center;
-  background-color: #3f3631;
+  background-color: $footer-color;
   width: 100%;
   min-height: 250px;
   flex-shrink: 0;
@@ -15,7 +15,7 @@ footer {
   z-index: 1;
 
   a {
-    color: white;
+    color: $light-color;
     text-decoration: none;
   }
 
@@ -36,7 +36,7 @@ footer::before {
   left: 2em;
   width: 5.4em;
   height: 2.2em;
-  background-color: #3f3631;
+  background-color: $footer-color;
   z-index: 3;
   pointer-events: none;
 }
@@ -118,7 +118,7 @@ footer .decor-parsnip .leaves {
   image-rendering: pixelated;
 }
 
-@media screen and (max-width: 727px) {
+@media screen and (max-width: $md) {
 
   footer .decor-beet {
     left: 60%;
@@ -127,9 +127,13 @@ footer .decor-parsnip .leaves {
   footer .decor-parsnip {
     display: none;
   }
+
+  footer {
+    text-align: left !important; 
+  }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: $sm) {
 
   footer p.copyright {
     width: 80%;
