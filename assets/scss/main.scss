@@ -4,6 +4,7 @@
 @import 'footer';
 @import 'top';
 
+// @TODO remove
 :root {
     --xl: #{$xl};
     --lg: #{$lg};
@@ -31,6 +32,7 @@ body {
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
     letter-spacing: 0;
+    background: $light-color;
 }
 
 header {
@@ -47,15 +49,24 @@ main {
     position: relative;
     z-index: 10;
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 33vh;
 
     section:last-child {
         padding: 3rem 1rem;
     }
 
     &.internal-main {
-        margin-top: 20vh;
+        margin-top: 10vh;
     }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
 }
 
 h2 {
@@ -80,28 +91,28 @@ a:hover path {
     fill: $primary-color;
 }
 
-.tt {
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
 .iel-logo {
-    height: 80px;
+    height: 50px;
     width: auto;
     display: inline-block;
     vertical-align: middle;
 }
 
+.iel-logo-mobile {
+    display: block;
+}
+
+.iel-logo-desktop {
+    display: none;
+}
+
 .image-theme {
     position: absolute;
-    /* Changed from fixed to absolute */
     top: 0;
     left: 0;
     width: 100%;
     min-height: 100vh;
     z-index: 1;
-    /* Remains behind the content */
-    /* Retain your existing background-image and size properties */
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--bg-image);
     background-size: cover;
     background-position: top;
@@ -115,7 +126,6 @@ a:hover path {
     padding: 0 1rem;
     text-align: center;
 }
-
 
 .btn-primary {
     background-color: $primary-color;
@@ -134,59 +144,43 @@ a:hover path {
     color: $light-color;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: 700;
-}
+@media (min-width: $lg) {
+    .iel-logo {
+        height: 80px;
+    }
 
-@media screen, print, projection {
-    body {
-        background: $light-color;
+    .iel-logo-mobile {
+        display: none;
+    }
+    
+    .iel-logo-desktop {
+        display: block;
+    }
+
+    main {
+        margin-bottom: 1rem;
+
+        &.internal-main {
+            margin-top: 20vh;
+        }
     }
 }
 
-@media screen and (min-width: $xl) {
-
+@media (min-width: $xl) {
     html,
     body {
         font-size: 18px;
     }
 }
 
-@media screen and (max-width: $lg) {
-
-    html,
-    body {
-        font-size: 16px;
-    }
-
-    .iel-logo {
-        height: 50px;
-    }
-
-    main.internal-main {
-        margin-top: 10vh;
-    }
-
-    main {
-        margin-bottom: 33vh;
-    }
-}
-
 @media print {
-
     html,
     body {
-         font-size: 12pt;
+        font-size: 12pt;
     }
 }
 
 @media projection {
-
     html,
     body {
         font-size: 24px;

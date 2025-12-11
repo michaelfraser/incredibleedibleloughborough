@@ -10,12 +10,12 @@
                     <picture>
                         {{ with $logo2 }}
                         {{ $processedLogo2 := . | resources.Fingerprint "md5" }}
-                        <source media="(max-width: var(--lg))" srcset="{{ $processedLogo2.RelPermalink }}">
+                        <img src="{{ $processedLogo2.RelPermalink }}" alt="Logo" class="iel-logo iel-logo-mobile">
                         {{ end }}
 
                         {{ with $logo }}
                         {{ $processedLogo := . | resources.Fingerprint "md5" }}
-                        <img src="{{ $processedLogo.RelPermalink }}" alt="Logo" class="iel-logo">
+                        <img src="{{ $processedLogo.RelPermalink }}" alt="Logo" class="iel-logo iel-logo-desktop">
                         {{ end }}
                     </picture>
                 </a>
