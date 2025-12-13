@@ -25,6 +25,10 @@ enableRobotsTXT = true
     url = '/our-gardens/'
     weight = 2
   [[menu.main]]
+    name = 'Get Involved'
+    url = '/get-involved/'
+    weight = 3
+  [[menu.main]]
     name = 'Contact Us'
     url = '/contact-us/'
-    weight = 3
+    weight = 4
