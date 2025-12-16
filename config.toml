@@ -1,4 +1,4 @@
-baseURL = 'https://edibleloughborough.org.uk/'
+baseURL = 'https://staging--incredibleedibleloughborough.netlify.app/'
 languageCode = 'en-gb'
 title = 'Incredible Edible Loughborough'
 disableKinds = ['taxonomy', 'term']
@@ -11,6 +11,10 @@ enableRobotsTXT = true
 [params]
   shortTitle = "IEL"
   contactEmailAddress = "info@edibleloughborough.org.uk"
+  breakpointXl = "1260px"
+  breakpointLg = "992px"
+  breakpointMd = "768px"
+  breakpointSm = "576px"
 
 [author]
   name = "Michael Fraser"
