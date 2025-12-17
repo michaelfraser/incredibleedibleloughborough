@@ -15,9 +15,7 @@ enableRobotsTXT = true
   breakpointLg = "992px"
   breakpointMd = "768px"
   breakpointSm = "576px"
-
-[author]
-  name = "Michael Fraser"
+  author.name = "Michael Fraser"
 
 [menu]
   [[menu.main]]
