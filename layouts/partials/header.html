@@ -46,8 +46,8 @@
                             <ul class="navbar-nav justify-content-end">
                                 {{ range .menus }}
                                 <li class="nav-item">
-                                    <a class="nav-link{{ if eq .URL (relURL $.context.RelPermalink) }} active{{ end }}"
-                                        href="{{ .URL }}">{{ .Name }}</a>
+                                    <a class="nav-link{{ if eq .url (relURL $.context.RelPermalink) }} active{{ end }}"
+                                        href="{{ .url }}">{{ .name }}</a>
                                 </li>
                                 {{ end }}
                             </ul>

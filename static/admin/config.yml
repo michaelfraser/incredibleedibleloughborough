@@ -4,6 +4,7 @@ backend:
   name: git-gateway
   url: http://localhost:8081/api/v1
   branch: main
+  squash_merges: true
 
 publish_mode: editorial_workflow
 
@@ -24,4 +25,23 @@ collections:
       - { label: 'Event Date', name: 'event_date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+
+  - name: "menu-configuration"
+    label: "Menu Configuration"
+    delete: false # Safety: hides the 'Delete' button in the UI
+    editor:
+      preview: false # Menus usually don't need a live preview
+    files:
+      - label: "Main Navigation"
+        name: "navigation"
+        file: "data/menu.yml" # Path to your new file
+        fields:
+          - label: "Menu Items"
+            name: "main" # Matches the 'main:' key in your YAML
+            widget: "list"
+            summary: '{{fields.name}}' # Shows the link name in the list view
+            fields:
+              - { label: "Link Name", name: "name", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Weight", name: "weight", widget: "number", default: 0 }      
 

@@ -16,21 +16,3 @@ enableRobotsTXT = true
   breakpointMd = "768px"
   breakpointSm = "576px"
   author.name = "Michael Fraser"
-
-[menu]
-  [[menu.main]]
-    name = 'Home'
-    url = '/'
-    weight = 1
-  [[menu.main]]
-    name = 'Our Gardens'
-    url = '/our-gardens/'
-    weight = 2
-  [[menu.main]]
-    name = 'Get Involved'
-    url = '/get-involved/'
-    weight = 3
-  [[menu.main]]
-    name = 'Contact Us'
-    url = '/contact-us/'
-    weight = 4

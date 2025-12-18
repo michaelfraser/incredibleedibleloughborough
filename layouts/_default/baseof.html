@@ -30,10 +30,10 @@
 
 <body>
     {{ if .IsHome }}
-    {{ partial "header.html" (dict "context" . "menus" .Site.Menus.main "imageTheme" "image-theme" "svgFill" "white"
+    {{ partial "header.html" (dict "context" . "menus" .Site.Data.menu.main "imageTheme" "image-theme" "svgFill" "white"
     "navbar" "bg-none" "mainClass" "") }}
     {{ else }}
-    {{ partial "header.html" (dict "context" . "menus" .Site.Menus.main "imageTheme" "" "svgFill" "white"
+    {{ partial "header.html" (dict "context" . "menus" .Site.Data.menu.main "imageTheme" "" "svgFill" "white"
     "navbar" "navbar-dark" "mainClass" "internal-main") }}
     {{ end }}
 
