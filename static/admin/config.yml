@@ -32,12 +32,12 @@ collections:
     editor:
       preview: false # Menus usually don't need a live preview
     files:
-      - label: "Main Navigation"
+      - label: "Navigation"
         name: "navigation"
-        file: "data/menu.yml" # Path to your new file
+        file: "data/menu.yml"
         fields:
           - label: "Menu Items"
-            name: "main" # Matches the 'main:' key in your YAML
+            name: "main" # Matches the 'main:' key in 'data/menu.yml'
             widget: "list"
             summary: '{{fields.name}}' # Shows the link name in the list view
             fields:
