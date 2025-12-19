@@ -12,8 +12,12 @@ netlify: ## Build and deploy to Netlify
 netlify-staging: ## Build and deploy to Netlify Staging environment
 	rm -rf public && netlify deploy --alias=staging
 
-start: ## start
+start-hugo: ## start Hugo server
 	hugo server -D
 
 start-cms: ## start Decap CMS
 	MODE=git npx decap-server
+
+start-all: ## start both Hugo server and Decap CMS
+	@echo "Starting Hugo server and Decap CMS..."
+	@$(MAKE) -j2 start-hugo start-cms	
