@@ -1,9 +1,9 @@
 main:
-  - name: 'Home'
-    url: '/'
-  - name: 'Our Gardens'
-    url: '/our-gardens/'
-  - name: 'Get Involved'
-    url: '/get-involved/'
-  - name: 'Contact Us'
-    url: '/contact-us/'
+  - name: "Home"
+    url: "/"
+  - name: "Our Gardens"
+    url: "/our-gardens/"
+  - name: "Get Involved"
+    url: "/get-involved/"
+  - name: "Contact Us"
+    url: "/contact-us/"
