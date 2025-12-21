@@ -64,7 +64,7 @@ const gardensCollection = {
             label: "Our Gardens",
             file: "data/gardens.yml",
             media_folder: "/assets/images/gardens",
-            public_folder: "/assets/images/gardens",
+            public_folder: "images/gardens",
             fields: [
                 {
                     label: "Gardens",
@@ -105,11 +105,11 @@ if (isLocal || roles.includes('admin')) {
 const cmsConfig = {
     load_config_file: false,
     local_backend: isLocal,
-    public_folder: '/assets/images',
     backend: {
         name: 'git-gateway', branch: 'main', squash_merges: true, url: isLocal ? "http://localhost:8081/api/v1" : undefined
     },
     media_folder: '/assets/images',
+    public_folder: 'images',
     publish_mode: 'editorial_workflow',
     collections: collections
 };
