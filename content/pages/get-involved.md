@@ -1,7 +1,7 @@
 ---
-title: "Get Involved"
-# type: "map"
-layout: "single"
+title: Get Involved
+slug: get-involved
+layout: single
 date: 2025-12-12
 draft: false
 ---
