@@ -1,5 +1,6 @@
 ---
-title: "About us"
+title: About us
+slug: about-us
 date: 2025-12-07
 draft: false
 ---

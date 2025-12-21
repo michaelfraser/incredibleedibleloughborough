@@ -131,7 +131,7 @@ const cmsConfig = {
     },
     media_folder: '/assets/images',
     public_folder: 'images',
-    publish_mode: 'editorial_workflow',
+    publish_mode: 'simple',
     collections: collections
 };
 
