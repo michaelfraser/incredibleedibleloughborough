@@ -1,5 +1,6 @@
 ---
-title: "Privacy Policy"
+title: Privacy Policy
+slug: privacy-policy
 date: 2025-12-05
 draft: false
 ---
