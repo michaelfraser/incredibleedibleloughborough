@@ -75,8 +75,7 @@ gardens:
     lng: -1.235281
     map_title: Thorpe Acre Road
   - name: King George Road Allotment
-    description: |
-      TBC
+    description: Blah blah blah
     image: /assets/images/gardens/place-holder.jpg
     google_map_url: https://maps.app.goo.gl/qFBPH3x8S5CkKxVm6
     lat: 52.76527
