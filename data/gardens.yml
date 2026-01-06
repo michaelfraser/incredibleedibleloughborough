@@ -27,12 +27,11 @@ gardens:
     lng: -1.206465
     map_title: Corner Garden, Cambridge Street
   - name: 24 Limehurst Avenue
-    description: >
-      The front garden of 24 Limehurst Avenue is an IEL garden and plenty of
-      neighbours go there to pick.  Just imagine if every other front garden in
-      Loughborough were the same.  How green and joyful a town this would
-      be.  Instead more and more people are paving over their front
-      gardens.  Where is the wildlife supposed to live?  Let's share our town
+    description: The front garden of **24 Limehurst Avenue** is an IEL garden and
+      plenty of neighbours go there to pick.  Just imagine if every other front
+      garden in Loughborough were the same.  How green and joyful a town this
+      would be.  Instead, more and more people are paving over their front
+      gardens.  Where is the wildlife supposed to live?  Let’s share our town
       with other living creatures.
     image: /images/gardens/limehurst-avenue.jpg
     google_map_url: https://maps.app.goo.gl/jo5dMXudKdojzKM26
