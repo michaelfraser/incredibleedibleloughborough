@@ -58,12 +58,11 @@ gardens:
     lng: -1.22954
     map_title: Warwick Way Flats
   - name: Thorpe Acre Road
-    description: >
-      Our small garden in Thorpe Acre Road is well known by the locals, who
-      often stop and talk when we are gardening there.  And across the road from
-      it there is another private front garden turned into a public source of
-      organic produce.
-    image: /images/gardens/thorpe-acre.jpg
+    description: Our small garden in **Thorpe Acre Road** is well known by the
+      locals, who often stop and talk when we are gardening there.  And across
+      the road from it there is another private front garden turned into a
+      public source of organic produce.
+    image: images/gardens/tar.jpg
     google_map_url: https://maps.app.goo.gl/XxHkGdCPUKadefuY8
     lat: 52.776742
     lng: -1.235281
