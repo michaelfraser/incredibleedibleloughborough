@@ -39,11 +39,9 @@ gardens:
     lng: -1.210581
     map_title: 24 Limehurst Avenue
   - name: Knightthorpe Methodist Church
-    description: >
-      The IEL garden in front of Knightthorpe Methodist Church has to be
+    description: The IEL garden in front of Knightthorpe Methodist Church has to be
       seen.  A lovely spot but also amazingly productive of healthy organic
-      food, free to anyone who cares to wander in off the street and thoroughly
-      enjoyed by the gardening group there.
+      food, free to anyone who cares to wander in off the street.
     image: /images/gardens/knightthorpe-church.jpg
     google_map_url: https://maps.app.goo.gl/tuvofNNyucRXtCaFA
     lat: 52.777257
