@@ -14,16 +14,15 @@ gardens:
     lng: -1.20373
     map_title: Fearon Hall
   - name: Corner Garden
-    description: >
-      The Corner Garden at the bottom of Cambridge St was our first
-      garden.  There are 11 raised beds, the wooden ones were made from
-      re-purposed wood by Glebe Workskills and paid for by Chesterton House
-      Financial Planning.  There is a herb garden, a fruit garden and at most
-      times of the year there will be vegetables to pick.  What a great
+    description: "**The Corner Garden** at the bottom of Cambridge Street is where
+      we started.  There are 11 raised beds, the wooden ones were made from
+      re-purposed wood by Glebe House Work Skills and paid for by Chesterton
+      House Financial Planning.  There are fruit bushes in the garden and at
+      most times of the year there will be vegetables to pick.  What a great
       community to be part of. Many people go there to enjoy the peace and to
       pick food and they all tell us they love what we have done.  When we
       started there the soil was dead, not a worm in sight.  Last year our
-      nasturtiums were covered in caterpillars.  Yippee, more butterflies.
+      nasturtiums were covered in caterpillars.  Yippee, more butterflies!"
     image: /images/gardens/corner.jpg
     google_map_url: https://maps.app.goo.gl/hBKbPKbTcYzBUDac6
     lat: 52.776984
