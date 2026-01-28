@@ -5,5 +5,7 @@ main:
     url: "/our-gardens/"
   - name: "Get Involved"
     url: "/get-involved/"
+  - name: "Events"
+    url: "/events/"
   - name: "Contact Us"
     url: "/contact-us/"
