@@ -104,8 +104,6 @@ const pagesCollection = {
     slug: '{{slug}}',
     extension: 'md',
     format: 'yaml-frontmatter',
-    media_folder: "",
-    public_folder: "",
     fields: standardFields
 };
 
@@ -131,8 +129,8 @@ const cmsConfig = {
     backend: {
         name: 'git-gateway', branch: 'main', squash_merges: true, url: isLocal ? "http://localhost:8081/api/v1" : undefined
     },
-    media_folder: '/assets/images/',
-    public_folder: '/images/',
+    media_folder: '/assets/images',
+    public_folder: 'images',
     publish_mode: 'simple',
     collections: collections
 };
