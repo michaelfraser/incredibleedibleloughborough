@@ -10,7 +10,7 @@ enableRobotsTXT = true
 
 [params]
   shortTitle = "IEL"
-  contactEmailAddress = "info@edibleloughborough.org.uk"
+  contactEmailAddress = "ediblelboro@gmail.com"
   breakpointXl = "1260px"
   breakpointLg = "992px"
   breakpointMd = "768px"
