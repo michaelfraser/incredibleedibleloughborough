@@ -9,7 +9,8 @@ draft: false
 
 ### Where & when we Garden
 
-**[Information shown here](https://incredibleedibleloughborough.netlify.app/garden-times/)**
+Want to help out? **[See where we’re gardening this week](https://incredibleedibleloughborough.netlify.app/garden-times/)** — our sessions are drop-in and open to everyone.
+
 
 ### Our food system is broken and unfair. You can become a change maker.
 
