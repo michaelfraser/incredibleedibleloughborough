@@ -9,7 +9,7 @@ draft: false
 
 ## Come Garden With Us
 
-Join us at our different gardens throughout the week. Everyone welcome — whether you stay 20 minutes or more, want to just chat, maybe see what we're doing or have any questions.
+Join us at our different [gardens ](https://incredibleedibleloughborough.netlify.app/our-gardens/)throughout the week. Everyone welcome — whether you stay 20 minutes or more, want to just chat, maybe see what we're doing or have any questions. **[See here where we are.](https://incredibleedibleloughborough.netlify.app/our-gardens/)**
 
 ## From March 2026
 
