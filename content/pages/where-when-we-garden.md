@@ -34,6 +34,8 @@ Join us at our different [gardens ](https://incredibleedibleloughborough.netlify
 
 ###### [Garden locations and information found here](https://incredibleedibleloughborough.netlify.app/our-gardens/)
 
+[](https://incredibleedibleloughborough.netlify.app/our-gardens/)
+
 #### Do I need experience?
 
 Nope! All skill levels are welcome.
