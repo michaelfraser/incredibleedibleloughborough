@@ -11,24 +11,24 @@ draft: false
 
 Join us at our different gardens throughout the week. Everyone welcome — whether you stay 20 minutes or more.
 
-
 Mondays 6pm - 8pm Two gardens in the Thorpe Acre area. - 
 
 Thorpe Acre Road 
 
-Three Closes
+Warwick Way Flats
 Wednesdays 2pm - 4pm
 
 Knightthorpe Methodist Church
 Wednesdays 5pm - 7pm 
 
-The IEL allotment
+King George Road Allotment
 Saturdays 10am - 12noon 
 
-The lEL allotment or gardens around Fearon Hall
+King George Road Allotment or gardens around Fearon Hall
 
-###### Garden locations and information found here
+###### [Contact us for more information](https://incredibleedibleloughborough.netlify.app/contact-us/)
 
+###### [Garden locations and information found here](https://incredibleedibleloughborough.netlify.app/our-gardens/)
 
 #### Do I need experience?
 
