@@ -7,9 +7,9 @@ draft: false
 ---
 ## Where & When We Garden
 
-### Come Garden With Us
+## Come Garden With Us
 
-Join us at our different gardens throughout the week. Everyone welcome — whether you stay 20 minutes or more.
+Join us at our different gardens throughout the week. Everyone welcome — whether you stay 20 minutes or more, want to just chat, maybe see what we're doing or have any questions.
 
 ### Mondays 6pm - 8pm 
 
