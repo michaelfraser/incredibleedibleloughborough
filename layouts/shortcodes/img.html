@@ -1,0 +1,20 @@
+{{ $src := .Get "src" | strings.TrimPrefix "/" }}
+{{ $w := .Get "width" | default "800x" }}
+{{ $img := resources.Get $src }}
+
+{{ if $img }}
+  {{/* Resize and convert to WebP for better performance */}}
+  {{ $processed := $img.Resize (printf "%s webp" $w) }}
+  <figure>
+    <img src="{{ $processed.RelPermalink }}" 
+         width="{{ $processed.Width }}" 
+         height="{{ $processed.Height }}" 
+         alt="{{ .Get "alt" }}"
+         loading="lazy">
+    {{ with .Get "caption" }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+{{ else }}
+  <p style="font-family: monospace; color: white; background: red; padding: 10px;">
+    <strong>Hugo Pipes Error:</strong> Image not found at <code>assets/{{ $src }}</code>
+  </p>
+{{ end }}
