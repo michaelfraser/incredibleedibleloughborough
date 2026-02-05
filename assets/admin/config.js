@@ -1,3 +1,29 @@
+CMS.registerEditorComponent({
+  id: "hugo-img",
+  label: "Image Picker",
+  fields: [
+    { name: "src", label: "Image", widget: "image" },
+    { name: "alt", label: "Alt Text", widget: "string" },
+    { name: "width", label: "Width (e.g. 600x)", widget: "string", default: "800x" }
+  ],
+
+  pattern: /{{<img src="([^"]*)" alt="([^"]*)" width="([^"]*)" >}}/,
+  fromBlock: function(match) {
+    return {
+      src: match[1],
+      alt: match[2],
+      width: match[3]
+    };
+  },
+  toBlock: function(obj) {
+    return `{{<img src="${obj.src}" alt="${obj.alt}" width="${obj.width}" >}}`;
+  },
+  toPreview: function(obj, getAsset) {
+    const asset = getAsset(obj.src);
+    return `<img src="${asset || ''}" style="max-width:100%; height:auto;" alt="${obj.alt}">`;
+  }
+});
+
 /**
  * 
  * ADMIN COLLECTIONS
@@ -115,9 +141,8 @@ const pagesCollection = {
 
 const user = window.netlifyIdentity ? window.netlifyIdentity.currentUser() : null;
 const roles = user?.app_metadata?.roles || [];
-const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-
 const collections = [eventsCollection, gardensCollection, pagesCollection];
+const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 
 if (isLocal || roles.includes('admin')) {
     collections.push(menuCollection);
@@ -127,7 +152,7 @@ const cmsConfig = {
     load_config_file: false,
     local_backend: isLocal,
     backend: {
-        name: 'git-gateway', branch: 'main', squash_merges: true, url: isLocal ? "http://localhost:8081/api/v1" : undefined
+        name: 'git-gateway', branch: 'main', squash_merges: true
     },
     media_folder: '/assets/images',
     public_folder: 'images',
