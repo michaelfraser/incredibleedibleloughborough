@@ -4,8 +4,8 @@
     <nav class="navbar navbar-expand-lg {{ .navbar }}">
         <div class="container-fluid">
             <div class="d-flex w-100 align-items-center">
-                {{ $smallLogo := resources.Get "images/smallLogo.png" | resources.Fingerprint "md5" }}
-                {{ $largeLogo := resources.Get "images/largeLogo.svg" | resources.Fingerprint "md5" }}
+                {{ $smallLogo := resources.Get "images/small_logo.png" | resources.Fingerprint "md5" }}
+                {{ $largeLogo := resources.Get "images/large_logo.svg" | resources.Fingerprint "md5" }}
                 <a href="/">
                     <picture>
                         <source media="(min-width: {{ .context.Site.Params.breakpointMd }})" srcset="{{ $largeLogo.RelPermalink }}">

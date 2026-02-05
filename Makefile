@@ -16,7 +16,7 @@ start-hugo: ## start Hugo server
 	hugo server -D
 
 start-cms: ## start Decap CMS
-	MODE=git npx decap-server
+	npx decap-server
 
 start-all: ## start both Hugo server and Decap CMS
 	@echo "Starting Hugo server and Decap CMS..."
