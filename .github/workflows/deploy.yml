@@ -22,7 +22,7 @@ jobs:
           extended: true
 
       - name: Build Hugo site
-        run: hugo --gc --minify
+        run: hugo --gc --minify && cp netlify.toml public/
 
       # Save the build so production uses the EXACT same files
       - name: Upload Build Artifact
