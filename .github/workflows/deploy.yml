@@ -55,6 +55,9 @@ jobs:
           name: site-build
           path: public/
 
+      - name: List files
+        run: ls -R public/
+
       - name: Deploy to Production
         run: npx netlify-cli deploy --prod --dir=public --message="Production deploy"
         env:
