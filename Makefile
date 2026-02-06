@@ -13,7 +13,7 @@ netlify-staging: build-staging ## Build and deploy to Netlify Staging environmen
 	npx netlify-cli deploy --alias=staging --dir=public --message="Staging deploy"
 
 netlify: build-production ## Build and deploy to Netlify
-	netlify deploy --prod
+	npx netlify-cli deploy --prod --dir=public --message="Production deploy"
 
 start-hugo: ## start Hugo server
 	hugo server -D
