@@ -37,29 +37,29 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-  deploy-production:
-    name: Promote to Production
-    needs: build-and-staging
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: "0.128.0"
-          extended: true
+  # deploy-production:
+  #   name: Promote to Production
+  #   needs: build-and-staging
+  #   runs-on: ubuntu-latest
+  #   environment: production
+  #   steps:
+  #     - name: Setup Hugo
+  #       uses: peaceiris/actions-hugo@v3
+  #       with:
+  #         hugo-version: "0.128.0"
+  #         extended: true
 
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: site-build
-          path: public/
+  #     - name: Download Build Artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: site-build
+  #         path: public/
 
-      - name: List files
-        run: ls -R public/ && mv public/netlify.toml ../.
+  #     - name: List files
+  #       run: ls -R public/ && mv public/netlify.toml ../.
 
-      - name: Deploy to Production
-        run: npx netlify-cli deploy --prod --dir=public --message="Production deploy"
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  #     - name: Deploy to Production
+  #       run: npx netlify-cli deploy --prod --dir=public --message="Production deploy"
+  #       env:
+  #         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  #         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
