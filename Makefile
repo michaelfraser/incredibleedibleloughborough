@@ -3,14 +3,17 @@ SHELL=/bin/bash
 help: ## This help
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-build: ## Build project
-	 rm -rf public && hugo --gc --minify
+build-staging: ## Build project
+	 rm -rf public && hugo --gc --minify --environment staging
 
-netlify: build ## Build and deploy to Netlify
+build-production: ## Build project
+	 rm -rf public && hugo --gc --minify --environment production
+
+netlify-staging: build-staging ## Build and deploy to Netlify Staging environment
+	npx netlify-cli deploy --alias=staging --dir=public --message="Staging deploy"
+
+netlify: build-production ## Build and deploy to Netlify
 	netlify deploy --prod
-
-netlify-staging: build ## Build and deploy to Netlify Staging environment
-	netlify deploy --alias=staging
 
 start-hugo: ## start Hugo server
 	hugo server -D
