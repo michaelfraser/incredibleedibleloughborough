@@ -43,10 +43,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
         with:
-          node-version: "20"
+          hugo-version: "0.128.0"
+          extended: true
 
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
