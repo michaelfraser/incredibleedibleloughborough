@@ -1,4 +1,4 @@
-{{/* Expects a dictionary like: {path: "...", alt: "...", title: "...", class: "...", width: "..."} */}}
+{{/* Expects a dictionary like: {path: "...", alt: "...", title: "...", class: "...", width: "...", loading: "lazy"} */}}
 {{ $params := . }}
 
 {{ $imagePath := print $params.path | replaceRE "^/assets/" "" | replaceRE "^assets/" "" }}
@@ -6,15 +6,21 @@
 {{ $imageTitle := $params.title | default (path.Base $imagePath | humanize) }}
 {{ $imageClass := $params.class | default "optimized-image" }}
 {{ $imageWidth := $params.width | default "800" }}
-{{ $resizeOption := printf "%sx webp" $imageWidth }}
+{{ $loading := $params.loading | default "lazy" }}
 
+{{ $resizeOption := printf "%sx webp" $imageWidth }}
 {{ $imageResource := resources.Get $imagePath }}
 
 {{ with $imageResource }}
     {{ $optimizedImage := .Resize $resizeOption | resources.Fingerprint "md5" }}
 
-    <img src="{{ $optimizedImage.RelPermalink }}" width="{{ $optimizedImage.Width }}" height="{{ $optimizedImage.Height }}"
-        alt="{{ $imageAlt }}" title="{{ $imageTitle }}" loading="lazy" class="{{ $imageClass }}">
+    <img src="{{ $optimizedImage.RelPermalink }}" 
+         width="{{ $optimizedImage.Width }}" 
+         height="{{ $optimizedImage.Height }}"
+         alt="{{ $imageAlt }}" 
+         title="{{ $imageTitle }}" 
+         loading="{{ $loading }}" 
+         class="{{ $imageClass }}">
 {{ else }}
     {{ warnf "Image asset not found at path: %s" $imagePath }}
 {{ end }}
