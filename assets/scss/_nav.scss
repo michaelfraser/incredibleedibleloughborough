@@ -1,69 +1,60 @@
-@import 'variables';
-@import 'fonts';
+@import "variables";
 
-:root {
-    --nav-underline-offset: 0.5em;
-    --nav-underline-thickness: 3px;
-    --nav-transition-speed: 0.2s;
-}
+$nav-offset: 0.5em;
+$nav-thick: 0.25em;
+$nav-speed: 0.2s;
 
 nav {
     text-transform: uppercase;
     font-family: $font-secondary;
 
-    a {
+    a,
+    .active {
         color: $light-color !important;
+        text-underline-offset: $nav-offset;
+        transition: opacity $nav-speed ease;
+    }
+
+    a {
         text-decoration: none;
         font-weight: 300;
         font-size: 1.25rem;
-        transition: text-decoration var(--nav-transition-speed) ease-in-out;
 
         &:hover {
             text-decoration: underline;
-            text-decoration-thickness: var(--nav-underline-thickness);
-            text-decoration-color: currentColor;
-            text-underline-offset: var(--nav-underline-offset);
+            text-decoration-thickness: $nav-thick;
         }
     }
 
     .active {
         text-decoration: underline;
-        text-decoration-thickness: var(--nav-underline-thickness);
-        text-decoration-color: currentColor;
-        text-underline-offset: var(--nav-underline-offset);
+        text-decoration-thickness: $nav-thick;
     }
 
     .social-link {
         position: relative;
         display: inline-flex;
         align-items: center;
-        text-decoration: none;
 
         .custom-tooltip {
-            /* 1. Behavior: Hidden by default */
             visibility: hidden;
             opacity: 0;
-            pointer-events: none; // Prevents mouse flicker when moving over the tooltip
-
-            /* 2. Positioning: Below the icon */
+            pointer-events: none;
             position: absolute;
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
             z-index: 100;
-
-            /* 3. Visual Styling */
-            background-color: $light-color;
+            background: $light-color;
             color: $primary-color;
             text-align: center;
             padding: 6px 12px;
-            border-radius: .5rem;
+            border-radius: 0.5rem;
             font-size: 0.8rem;
             font-weight: 500;
             white-space: nowrap;
-            box-shadow: 0px 2px 5px rgba($light-color, 0.2);
-
-            transition: opacity 0.2s ease-in-out, visibility 0.2s, transform 0.2s ease-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all $nav-speed ease-out;
 
             &.custom-tooltip-last {
                 transform: translateX(-85%);
@@ -74,18 +65,13 @@ nav {
             }
         }
 
-        &:hover {
-            .custom-tooltip {
-                visibility: visible;
-                opacity: 1;
+        &:hover .custom-tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(4px);
 
-                &.custom-tooltip-last {
-                    transform: translateX(-85%) translateY(4px);
-                }
-
-                &:not(.custom-tooltip-last) {
-                    transform: translateX(-50%) translateY(4px);
-                }
+            &.custom-tooltip-last {
+                transform: translateX(-85%) translateY(4px);
             }
         }
     }
@@ -101,20 +87,11 @@ nav {
 }
 
 .navbar-toggler {
-    border-color: $light-color;
-
-    &:focus,
-    &:active {
-        border-color: $light-color;
+    &:focus {
         box-shadow: none;
         outline: none;
     }
 }
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
 
 @media (min-width: $lg) {
     .navbar-nav {
@@ -132,15 +109,15 @@ nav {
         width: clamp(250px, 80vw, 400px);
         height: 100vh;
         padding: 3rem 2rem;
-        background-color: $primary-color !important;
+        background: $primary-color !important;
         box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
         overflow-y: auto;
-        transform: translateX(100%); // Start off-screen to the right
+        transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
         z-index: 1050;
 
         &.show {
-            transform: translateX(0); // Slide in from right
+            transform: translateX(0);
         }
     }
 
@@ -151,11 +128,37 @@ nav {
     }
 
     .btn-close {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        filter: brightness(0) invert(1);
-        z-index: 1051;
+    // 1. Positioning (from your first block)
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1051;
+
+    // 2. Dimensions & Reset (from your second block)
+    width: 1em;
+    height: 1em;
+    padding: 0.25em;
+    border: 0;
+    border-radius: 0.375rem;
+    box-sizing: content-box;
+
+    // 3. Visuals & Icon
+    // Hardcoding the SVG background saves defining 8+ variables
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    
+    // This makes the black SVG white (much shorter than the 'white-filter' variable)
+    filter: brightness(0) invert(1);
+    opacity: 0.8; // Slightly transparent until hover
+    transition: opacity 0.2s;
+
+    &:hover {
         opacity: 1;
+        text-decoration: none;
     }
+
+    &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+    }
+}
 }
