@@ -165,7 +165,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: $dark-color;
+    color: $secondary-color;
     font-weight: 700;
 }
 
@@ -179,7 +179,7 @@ svg {
 }
 
 a {
-    color: $links;
+    color: $secondary-color;
     text-decoration: none;
     font-weight: 800;
 }
@@ -223,8 +223,8 @@ a:hover path {
 
 .btn {
     background-color: $light-color;
-    border: 2px solid $dark-color;
-    color: $dark-color;
+    border: 2px solid $secondary-color;
+    color: $secondary-color;
     padding: 0.375rem 0.75rem;
     border-radius: 40rem;
     display: inline-block;
@@ -233,9 +233,9 @@ a:hover path {
     transition: all 0.2s ease-in-out;
 
     &:hover {
-        background-color: $dark-color;
+        background-color: $secondary-color;
         color: $light-color;
-        border-color: $dark-color;
+        border-color: $secondary-color;
     }
 }
 
