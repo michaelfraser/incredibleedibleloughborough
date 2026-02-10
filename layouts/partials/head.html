@@ -23,10 +23,24 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-{{- $description := .Description | default .Site.Params.description -}}
-{{- if $description -}}
-    <meta name="description" content="{{ $description }}">
+
+{{- $desc := "" -}}
+
+{{- if .Params.description -}}
+    {{/* Look specifically in the Params map first */}}
+    {{- $desc = .Params.description -}}
+{{- else if .Description -}}
+    {{/* Look in the standard Hugo Description field */}}
+    {{- $desc = .Description -}}
+{{- else if .Site.Params.description -}}
+    {{/* Fallback to config.toml */}}
+    {{- $desc = .Site.Params.description -}}
 {{- end -}}
+
+{{- if $desc -}}
+    <meta name="description" content="{{ $desc | plainify | htmlEscape }}">
+{{- else -}}
+    {{- end -}}
 
 <title>{{ .Title }} - {{ .Site.Params.ShortTitle }}</title>
 
