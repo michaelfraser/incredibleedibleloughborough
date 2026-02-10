@@ -48,7 +48,18 @@
 {{ with resources.Get "js/site.js" | js.Build $opts | fingerprint }}
   <script src="{{ .RelPermalink }}" defer></script>
 {{ end }}
-<script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 
 {{ if .IsHome }}
     {{ $imgData := dict "small" 640 "medium" 1200 "large" 1600 }}
