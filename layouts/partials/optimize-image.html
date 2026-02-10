@@ -4,32 +4,38 @@
 {{ $finalOutput := "" }}
 
 {{ with $imageResource }}
-    {{ $targetWidth := int ($params.w | default 0) }}
+    {{ $q := "q35" }}
 
     {{ if $params.return_resource }}
-        {{ $q := "q40" }}
-        {{ if le $targetWidth 360 }} {{ $q = "q25" }} {{ end }}        
+        {{ $targetWidth := int ($params.w | default 728) }}
         {{ $finalOutput = .Resize (printf "%dx webp %s box strip" $targetWidth $q) | resources.Fingerprint "md5" }}
     {{ else }}
-        {{ $widths := slice 360 471 942 }}
+        {{ $widths := slice 360 720 1080 1456 }}
         {{ $srcset := slice }}
         
         {{ range $widths }}
-            {{ $q_loop := "q40" }}
-            {{ if eq . 360 }} {{ $q_loop = "q25" }} {{ end }}
-            {{ $loopResized := $imageResource.Resize (printf "%dx webp %s box strip" . $q_loop) }}
-            {{ $srcset = $srcset | append (printf "%s %dw" $loopResized.RelPermalink .) }}
+            {{/* Only generate if the original is large enough */}}
+            {{ if ge $imageResource.Width . }}
+                {{ $loopResized := $imageResource.Resize (printf "%dx webp %s box strip" . $q) }}
+                {{ $srcset = $srcset | append (printf "%s %dw" $loopResized.RelPermalink .) }}
+            {{ end }}
         {{ end }}
 
-        {{ $fallback := $imageResource.Resize "471x webp q40 box strip" }}
+        {{ $displayW := 728 }} 
+        {{ $displayH := div (mul .Height $displayW) .Width }}
+        {{ $aspectRatio := printf "%d / %d" .Width .Height }}
+        {{ $fallback := $imageResource.Resize (printf "%dx webp %s box strip" $displayW) }}
 
-        {{ $finalOutput = printf `<img src="%s" srcset="%s" sizes="(max-width: 480px) 33vw, 471px" width="471" height="353" alt="%s" loading="%s" fetchpriority="%s" class="%s" style="height: auto; width: 100%; max-width: 471px; aspect-ratio: 471 / 353; display: block;">` 
+        {{ $finalOutput = printf `<img src="%s" srcset="%s" sizes="(max-width: 480px) 360px, (max-width: 768px) 728px, 728px" width="%d" height="%d" alt="%s" loading="%s" fetchpriority="%s" class="%s" style="height: auto; width: 100%%; max-width: 728px; aspect-ratio: %s; display: block;">` 
             $fallback.RelPermalink 
             (delimit $srcset ", ") 
-            ($params.alt | default "Map detail") 
+            $displayW
+            $displayH 
+            ($params.alt | default "Image") 
             ($params.loading | default "lazy") 
-            ($params.fetchpriority | default "low") 
-            ($params.class | default "img-fluid") | safeHTML }}
+            ($params.fetchpriority | default "auto") 
+            ($params.class | default "img-fluid") 
+            $aspectRatio | safeHTML }}
     {{ end }}
 {{ else }}
     {{ warnf "Image not found: %s" $imagePath }}
