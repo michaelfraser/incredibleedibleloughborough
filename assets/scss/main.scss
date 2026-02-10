@@ -1,8 +1,106 @@
+{{ $m := resources.Get "fonts/montserrat-v31-latin-regular.woff2" | fingerprint }}
+{{ $m700 := resources.Get "fonts/montserrat-v31-latin-700.woff2" | fingerprint }}
+{{ $l := resources.Get "fonts/londrina-solid-v19-latin-regular.woff2" | fingerprint }}
+
+$londrina-path: "{{ replace $l.RelPermalink "/assets" "" }}";
+$montserrat-path: "{{ replace $m.RelPermalink "/assets" "" }}";
+$montserrat700-path: "{{ replace $m700.RelPermalink "/assets" "" }}";
+
+/* londrina-solid-regular - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Londrina Solid';
+    font-style: normal;
+    font-weight: 400;
+    src: url("#{$londrina-path}") format('woff2');
+}
+
+/* montserrat-regular - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url("#{$montserrat-path}") format('woff2'); // No quotes needed for the variable
+}
+
+/* montserrat-700 - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: url("#{$montserrat700-path}") format('woff2');
+}
+
 @import 'variables';
-@import 'fonts';
+
+// 1. SETTINGS & TRIMMING (Must come first)
+$enable-cssgrid: false;
+$enable-button-pointers: true;
+$enable-shadows: false;
+$enable-gradients: false;
+$enable-caret: false;
+$enable-print-styles: false;
+
+// reboot
+$enable-transitions: false;
+$enable-grid-classes: true;
+$enable-caret: false;
+$include-column-box-sizing: true;
+$enable-smooth-scroll: false;
+
+// Remove XL and XXL breakpoints to save massive amounts of Grid/Utility space
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px
+);
+
+// 2. BOOTSTRAP LOGIC
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/maps";
+@import "bootstrap/mixins";
+@import "bootstrap/utilities";
+
+// 3. UTILITY FILTER (Kills the unused color variables and positioning)
+$utilities: map-merge(
+  $utilities, (
+    "opacity": null,
+    "shadow": null,
+    "position": null,
+    "top": null,
+    "bottom": null,
+    "start": null,
+    "end": null,
+    "float": null,
+    "border": null,
+    "rounded": null,
+    "visibility": null,
+    "vertical-align": null
+  )
+);
+
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/containers";
+@import "bootstrap/grid";
+@import "bootstrap/helpers";
+@import "bootstrap/nav";
+@import "bootstrap/navbar";
+@import "bootstrap/utilities/api";
+
 @import 'nav';
-@import 'footer';
-@import 'top';
+@import 'variables';
+
 
 // @TODO remove
 :root {
@@ -21,6 +119,7 @@
 html {
     font-size: 16px;
     height: 100%;
+    scroll-behavior: smooth;
 }
 
 html,
@@ -51,9 +150,9 @@ main {
     margin-top: 0;
     margin-bottom: 33vh;
 
-    section:last-child {
-        padding: 3rem 1rem;
-    }
+    // section:last-child {
+    //     padding: 3rem 1rem;
+    // }
 
     &.internal-main {
         margin-top: 10vh;
@@ -71,7 +170,7 @@ h6 {
 
 h2 {
     color: $primary-color;
-    margin-bottom: 1rem;
+    // margin-bottom: 1rem;
 }
 
 svg {
@@ -109,18 +208,16 @@ a:hover path {
 
 .image-theme {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    inset: 0;
     min-height: 100vh;
     z-index: 1;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--bg-image);
-    background-size: cover;
-    background-position: top;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                var(--bg-image) top / cover no-repeat;
 }
 
 .hero-content {
-    min-height: 100vh;
+    min-height: 55vh;
+    margin-bottom: 45vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,21 +225,26 @@ a:hover path {
     text-align: center;
 }
 
-.btn-primary {
-    background-color: $primary-color;
-    border-color: $primary-color;
-}
-
-.btn-secondary {
+.btn {
     background-color: $light-color;
-    border-color: $primary-color;
+    border: 1px solid $primary-color;
     color: $primary-color;
+    padding: 0.375rem 0.75rem;
+    border-radius: 40rem;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: $primary-color;
+        color: $light-color;
+        border-color: $primary-color;
+    }
 }
 
-.btn-secondary:hover {
-    background-color: $primary-color;
-    border-color: $primary-color;
-    color: $light-color;
+.text-white {
+    color: $light-color !important;
 }
 
 @media (min-width: $lg) {
