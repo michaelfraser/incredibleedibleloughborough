@@ -1,6 +1,7 @@
 ---
 title: "Welcome to Incredible Edible Loughborough"
 date: 2025-12-07
+description: "Incredible Edible Loughborough sets out to create kind, resilient communities through growing food on land open to the public and sharing that food with all."
 draft: false
 markup: "html"
 ---
@@ -14,8 +15,8 @@ markup: "html"
             through growing food on land open to the public and sharing that food with all</p>
 
         <p>
-            <a class="btn btn-secondary rounded-pill" href="/our-gardens" target="_self" role="button">GARDENS</a>
-            <a class="btn btn-secondary rounded-pill" href="/about-us" target="_self" role="button">WHO WE ARE</a>
+            <a class="btn" href="/our-gardens" target="_self" role="button">GARDENS</a>
+            <a class="btn" href="/about-us" target="_self" role="button">WHO WE ARE</a>
         </p>
     </div>
 </section>
