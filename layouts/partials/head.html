@@ -84,26 +84,3 @@
     });
   }
 </script>
-
-{{ if .IsHome }}
-    {{ $imgData := dict "small" 640 "medium" 1200 "large" 1600 }}
-    {{ $res := dict }}
-
-    {{ range $name, $width := $imgData }}
-    {{ $proc := partial "optimize-image.html" (dict "path" "images/homepage.jpg" "w" $width "return_resource" true) }}
-    {{ $res = merge $res (dict $name $proc) }}
-    {{ end }}
-
-    {{ $images := dict "1200px" $res.large "768px" $res.medium "0px" $res.small }}
-
-<style>
-  {{ range $width, $img := $images }}
-    {{ if ne $width "0px" }}
-      @media (min-width: {{ $width }}) { :root { --bg-image: url('{{ $img.RelPermalink }}'); } }
-    {{ else }}
-      :root { --bg-image: url('{{ $img.RelPermalink }}'); }
-    {{ end }}
-  {{ end }}
-</style>
-
-{{ end }}
