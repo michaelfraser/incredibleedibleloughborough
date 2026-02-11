@@ -35,7 +35,7 @@ $montserrat700-path: "{{ replace $m700.RelPermalink "/assets" "" }}";
 
 @import 'variables';
 
-// 1. SETTINGS & TRIMMING (Must come first)
+// SETTINGS & TRIMMING (Must come first)
 $enable-cssgrid: false;
 $enable-button-pointers: true;
 $enable-shadows: false;
@@ -64,14 +64,13 @@ $container-max-widths: (
   lg: 960px
 );
 
-// 2. BOOTSTRAP LOGIC
 @import "bootstrap/functions";
 @import "bootstrap/variables";
 @import "bootstrap/maps";
 @import "bootstrap/mixins";
 @import "bootstrap/utilities";
 
-// 3. UTILITY FILTER (Kills the unused color variables and positioning)
+// UTILITY FILTER (Kills the unused color variables and positioning)
 $utilities: map-merge(
   $utilities, (
     "opacity": null,
@@ -99,7 +98,6 @@ $utilities: map-merge(
 @import "bootstrap/utilities/api";
 
 @import 'nav';
-@import 'variables';
 
 
 // @TODO remove
@@ -117,7 +115,7 @@ $utilities: map-merge(
 }
 
 html {
-    font-size: 16px;
+    font-size: 100%;
     height: 100%;
     scroll-behavior: smooth;
 }
@@ -125,7 +123,6 @@ html {
 html,
 body {
     font-family: $font-primary;
-    font-size: 100%;
     font-weight: 300;
     -moz-font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
@@ -134,8 +131,14 @@ body {
     background: $light-color;
 }
 
+body {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body is at least as tall as the screen */
+}
+
 header {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -145,18 +148,11 @@ header {
 }
 
 main {
+    flex: 1 0 auto;
     position: relative;
     z-index: 10;
     margin-top: 0;
-    margin-bottom: 33vh;
-
-    // section:last-child {
-    //     padding: 3rem 1rem;
-    // }
-
-    &.internal-main {
-        margin-top: 10vh;
-    }
+    margin-bottom: 40vh;
 }
 
 h1,
@@ -192,7 +188,7 @@ path {
 }
 
 a:hover path {
-    fill: $primary-color;
+    fill: $footer-color;
 }
 
 .logo {
@@ -249,18 +245,13 @@ a:hover path {
     }
 
     main {
-        margin-bottom: 1rem;
-
-        &.internal-main {
-            margin-top: 20vh;
-        }
+        margin-bottom: 4rem;
     }
 }
 
 @media (min-width: $xl) {
-    html,
     body {
-        font-size: 18px;
+        font-size: 1.2rem;
     }
 }
 
@@ -272,8 +263,7 @@ a:hover path {
 }
 
 @media projection {
-    html,
     body {
-        font-size: 24px;
+        font-size: 2rem
     }
 }
