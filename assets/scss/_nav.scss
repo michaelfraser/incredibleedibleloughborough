@@ -1,126 +1,118 @@
-@import 'variables';
-@import 'fonts';
+@import "variables";
+
+$nav-offset: 0.5em;
+$nav-thick: 0.25em;
+$nav-speed: 0.2s;
 
 :root {
-    --nav-underline-offset: 0.5em;
-    --nav-underline-thickness: 3px;
-    --nav-transition-speed: 0.2s;
+    --bs-nav-link-font-size: 1.5rem;
+    --bs-nav-link-font-weight: 300;
+    --bs-nav-link-color: $light-color;
+    .navbar-nav {
+        --bs-nav-link-color: $light-color;
+    }
 }
+
+@mixin btn-reset {
+    appearance: none;
+    -webkit-appearance: none;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0;
+    cursor: pointer;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-toggler-icon { background-image: none !important; }
 
 nav {
     text-transform: uppercase;
     font-family: $font-secondary;
 
-    a {
+    a, .active {
         color: $light-color !important;
+        text-underline-offset: $nav-offset;
+        transition: opacity $nav-speed ease;
+        text-decoration-thickness: $nav-thick;
+    }
+
+    a {
         text-decoration: none;
-        font-weight: 300;
-        font-size: 1.25rem;
-        transition: text-decoration var(--nav-transition-speed) ease-in-out;
-
-        &:hover {
-            text-decoration: underline;
-            text-decoration-thickness: var(--nav-underline-thickness);
-            text-decoration-color: currentColor;
-            text-underline-offset: var(--nav-underline-offset);
-        }
+        &:hover { text-decoration: underline; }
     }
 
-    .active {
-        text-decoration: underline;
-        text-decoration-thickness: var(--nav-underline-thickness);
-        text-decoration-color: currentColor;
-        text-underline-offset: var(--nav-underline-offset);
-    }
+    .active { text-decoration: underline; }
 
     .social-link {
         position: relative;
         display: inline-flex;
         align-items: center;
-        text-decoration: none;
 
         .custom-tooltip {
-            /* 1. Behavior: Hidden by default */
             visibility: hidden;
             opacity: 0;
-            pointer-events: none; // Prevents mouse flicker when moving over the tooltip
-
-            /* 2. Positioning: Below the icon */
+            pointer-events: none;
             position: absolute;
             top: 100%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%); // Base state
             z-index: 100;
-
-            /* 3. Visual Styling */
-            background-color: $light-color;
-            color: $primary-color;
-            text-align: center;
+            background: $light-color;
+            color: $footer-color;
             padding: 6px 12px;
-            border-radius: .5rem;
-            font-size: 0.8rem;
+            border-radius: 0.5rem;
             font-weight: 500;
             white-space: nowrap;
-            box-shadow: 0px 2px 5px rgba($light-color, 0.2);
-
-            transition: opacity 0.2s ease-in-out, visibility 0.2s, transform 0.2s ease-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all $nav-speed ease-out;
 
             &.custom-tooltip-last {
                 transform: translateX(-85%);
-
-                &::after {
-                    left: 85%;
-                }
+                &::after { left: 85%; }
             }
         }
 
-        &:hover {
-            .custom-tooltip {
-                visibility: visible;
-                opacity: 1;
+        &:hover .custom-tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(4px);
 
-                &.custom-tooltip-last {
-                    transform: translateX(-85%) translateY(4px);
-                }
-
-                &:not(.custom-tooltip-last) {
-                    transform: translateX(-50%) translateY(4px);
-                }
+            &.custom-tooltip-last {
+                transform: translateX(-85%) translateY(4px);
             }
         }
+    }
+
+    .burger-icon {
+        @include btn-reset;
+        color: $light-color;
+        font-size: 1.5rem;
+        padding: 10px 0 0 5px;
+        
+        &:hover { color: $footer-color; }
     }
 }
 
 .navbar-dark {
     background: $primary-color;
     color: $light-color;
-
-    a:hover path {
-        fill: $footer-color;
-    }
+    // a:hover path { fill: $footer-color; }
 }
 
-.navbar-toggler {
-    border-color: $light-color;
-
-    &:focus,
-    &:active {
-        border-color: $light-color;
-        box-shadow: none;
-        outline: none;
-    }
+.navbar-toggler:focus {
+    box-shadow: none;
+    outline: none;
 }
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
 
 @media (min-width: $lg) {
     .navbar-nav {
         display: flex;
         list-style: none;
-        gap: 2rem;
+        gap: 1rem;
     }
 }
 
@@ -132,30 +124,42 @@ nav {
         width: clamp(250px, 80vw, 400px);
         height: 100vh;
         padding: 3rem 2rem;
-        background-color: $primary-color !important;
+        background: $footer-color !important;
         box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
         overflow-y: auto;
-        transform: translateX(100%); // Start off-screen to the right
+        transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
         z-index: 1050;
-
-        &.show {
-            transform: translateX(0); // Slide in from right
+        
+        .nav-link, .active {
+            color: $light-color !important;
+            text-shadow: none;
+            opacity: 1 !important;
         }
+
+        &.show { transform: translateX(0); }
     }
 
     .navbar-nav {
         flex-direction: column;
-        gap: 1.5rem;
-        margin-top: 2rem;
+        gap: 0.75rem;
+        
     }
 
-    .btn-close {
+    :root {
+        --bs-nav-link-font-size: 1rem;
+    }
+    .close-button {
+        @include btn-reset;
         position: absolute;
         top: 1rem;
         right: 1rem;
-        filter: brightness(0) invert(1);
         z-index: 1051;
-        opacity: 1;
+        width: 44px;
+        height: 44px;
+        color: $light-color;
+        font-size: 2rem;
+        transition: color 0.2s ease;        
     }
 }
+

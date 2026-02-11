@@ -1,26 +1,44 @@
-{{/* Expects a dictionary like: {path: "...", alt: "...", title: "...", class: "...", width: "...", loading: "lazy"} */}}
 {{ $params := . }}
-
 {{ $imagePath := print $params.path | replaceRE "^/assets/" "" | replaceRE "^assets/" "" }}
-{{ $imageAlt := $params.alt | default (path.Base $imagePath | humanize) }}
-{{ $imageTitle := $params.title | default (path.Base $imagePath | humanize) }}
-{{ $imageClass := $params.class | default "optimized-image" }}
-{{ $imageWidth := $params.width | default "800" }}
-{{ $loading := $params.loading | default "lazy" }}
-
-{{ $resizeOption := printf "%sx webp" $imageWidth }}
 {{ $imageResource := resources.Get $imagePath }}
+{{ $finalOutput := "" }}
 
 {{ with $imageResource }}
-    {{ $optimizeImage := .Resize $resizeOption | resources.Fingerprint "md5" }}
+    {{ $q := "q35" }}
 
-    <img src="{{ $optimizeImage.RelPermalink }}" 
-         width="{{ $optimizeImage.Width }}" 
-         height="{{ $optimizeImage.Height }}"
-         alt="{{ $imageAlt }}" 
-         title="{{ $imageTitle }}" 
-         loading="{{ $loading }}" 
-         class="{{ $imageClass }}">
+    {{ if $params.return_resource }}
+        {{ $targetWidth := int ($params.w | default 728) }}
+        {{ $finalOutput = .Resize (printf "%dx webp %s box strip" $targetWidth $q) | resources.Fingerprint "md5" }}
+    {{ else }}
+        {{ $widths := slice 360 720 1080 1456 }}
+        {{ $srcset := slice }}
+        
+        {{ range $widths }}
+            {{/* Only generate if the original is large enough */}}
+            {{ if ge $imageResource.Width . }}
+                {{ $loopResized := $imageResource.Resize (printf "%dx webp %s box strip" . $q) }}
+                {{ $srcset = $srcset | append (printf "%s %dw" $loopResized.RelPermalink .) }}
+            {{ end }}
+        {{ end }}
+
+        {{ $displayW := 728 }} 
+        {{ $displayH := div (mul .Height $displayW) .Width }}
+        {{ $aspectRatio := printf "%d / %d" .Width .Height }}
+        {{ $fallback := $imageResource.Resize (printf "%dx webp %s box strip" $displayW) }}
+
+        {{ $finalOutput = printf `<img src="%s" srcset="%s" sizes="(max-width: 480px) 360px, (max-width: 768px) 728px, 728px" width="%d" height="%d" alt="%s" loading="%s" fetchpriority="%s" class="%s" style="height: auto; width: 100%%; max-width: 728px; aspect-ratio: %s; display: block;">` 
+            $fallback.RelPermalink 
+            (delimit $srcset ", ") 
+            $displayW
+            $displayH 
+            ($params.alt | default "Image") 
+            ($params.loading | default "lazy") 
+            ($params.fetchpriority | default "auto") 
+            ($params.class | default "img-fluid") 
+            $aspectRatio | safeHTML }}
+    {{ end }}
 {{ else }}
-    {{ warnf "Image asset not found at path: %s" $imagePath }}
+    {{ warnf "Image not found: %s" $imagePath }}
 {{ end }}
+
+{{ return $finalOutput }}

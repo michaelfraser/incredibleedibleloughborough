@@ -1,0 +1,16 @@
+{{ $images := resources.Match "images/process/*" }}
+
+{{ range $img := $images }}
+  {{ if eq $img.ResourceType "image" }}
+    
+    {{ $fileName := path.Base $img.Name }}    
+    {{ $extension := path.Ext $fileName }}
+    {{ $base := strings.TrimSuffix $extension $fileName }}    
+    {{ $webp := $img.Process "webp q40" }}
+    {{ $targetPath := printf "images/process/%s.webp" $base }}
+    {{/* 6. Copy and Publish */}}
+    {{ $published := $webp | resources.Copy $targetPath }}
+    {{ $null := $published.RelPermalink }}
+
+  {{ end }}
+{{ end }}

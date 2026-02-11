@@ -1,3 +1,5 @@
+import Collapse from './bootstrap/js/src/collapse.js';
+
 (function() {
   document.documentElement.classList.add('has-js');
   const topButton = document.querySelector('a.back-to-top');
@@ -5,18 +7,31 @@
     console.error('Back to top button not found');
     return;
   }
-  const scrollThreshold = 400; // Show button after scrolling 400px down
-  
+
+  topButton.addEventListener('click', function(e) {
+    e.preventDefault(); // Stop the default #top jump
+    
+    // Check if user prefers reduced motion
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches 
+      ? 'auto' 
+      : 'smooth';
+
+    window.scrollTo({
+      top: 0,
+      behavior: behavior
+    });
+  });
+
   function updateButtonVisibility() {
+    const scrollThreshold = 400; // Show button after scrolling 400px down
     const scrolled = window.scrollY;
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
     
-    // Check if scrolled past threshold OR at bottom of page
     const pastThreshold = scrolled > scrollThreshold;
-    const atBottom = (scrolled + windowHeight) >= documentHeight - 10;
-    
-    if (pastThreshold || atBottom) {
+    const atBottom = scrolled + windowHeight >= documentHeight - 10;
+    const scrolledToBottom = (scrolled > 0 ) && atBottom;    
+    if (pastThreshold || scrolledToBottom) {
       topButton.classList.add('visible');
     } else {
       topButton.classList.remove('visible');
@@ -32,6 +47,5 @@
     scrollTimeout = window.requestAnimationFrame(updateButtonVisibility);
   });
   
-  // Check initial state on page load
   updateButtonVisibility();
 })();

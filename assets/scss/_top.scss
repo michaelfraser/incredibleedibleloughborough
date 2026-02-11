@@ -17,7 +17,7 @@
   
   // Visual styles
   background-color: $primary-color;
-  background-image: url("/assets/images/arrow_up_white.png");
+  background-image: url("/assets/images/arrow_up_white.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 1.1em;
@@ -59,13 +59,6 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-  }
-}
-
-@media screen and (max-width: $lg) {
-  .has-js .back-to-top {
-    right: 0.5rem;
-    bottom: 0.5rem;
   }
 }
 
