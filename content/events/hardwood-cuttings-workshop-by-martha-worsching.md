@@ -1,10 +1,10 @@
 ---
 title: Hardwood Cuttings Workshop by Martha Worsching
-publish_date: 2026-01-06T18:44:00.000+00:00
-event_date: 2026-01-10T10:00:00.000+00:00
 description: Hardwood Cuttings Workshop by Martha Worsching
+date: 2026-01-06
+event_date: 2026-01-10T10:00:00.000+00:00
 ---
-### Hardwood Cuttings Workshop by Martha Worsching
+# Hardwood Cuttings Workshop by Martha Worsching
 
 10/01/2026 at Fearon Hall
 

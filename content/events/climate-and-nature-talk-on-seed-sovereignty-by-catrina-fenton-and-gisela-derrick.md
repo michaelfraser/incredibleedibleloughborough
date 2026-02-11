@@ -1,11 +1,11 @@
 ---
 title: Seed Sovereignty Talk by Catrina Fenton and Gisela Derrick
-publish_date: 2026-01-06T19:52:00.000+00:00
+date: 2026-01-06
 event_date: 2026-02-19T19:00:00.000+00:00
 description: Climate and Nature Talk on Seed Sovereignty by Catrina Fenton and
   Gisela Derrick
 ---
-### Climate and Nature Talk on Seed Sovereignty
+# Climate and Nature Talk on Seed Sovereignty
 
 19/02/2026,  7pm - 9pm at Fearon Hall
 
