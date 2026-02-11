@@ -16,9 +16,15 @@
 }}
 {{ $css := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "main.scss" . | toCSS $opts | postCSS | minify }}
 
-{{/* 14KB = 14,336 bytes */}}
-{{ if gt (len $css.Content) 14336 }}
-  {{ errorf "⚠️ CSS BUDGET EXCEEDED: Current size is %d bytes (Limit: 14,336)" (len $css.Content) }}
+{{/* 14KB Budget Check */}}
+{{ $size := len $css.Content }}
+{{ if gt $size 14336 }}
+  {{ errorf "⚠️ CSS BUDGET EXCEEDED: %d bytes" $size }}
+{{ end }}
+
+{{/* Minimum Size Check (Ensures Bootstrap isn't missing) */}}
+{{ if lt $size 3000 }}
+  {{ errorf "⚠️ CSS TOO SMALL: %d bytes. Bootstrap likely failed to bundle." $size }}
 {{ end }}
 
 <meta charset="UTF-8">
