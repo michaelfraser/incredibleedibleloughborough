@@ -6,11 +6,14 @@ help: ## This help
 clean: ## Delete build artifacts
 	rm -rf public resources/_gen
 
-build-staging: clean ## Build project
-	 hugo --gc --minify --environment staging
+build-staging: clean
+	$(MAKE) build-hugo SKIP_CHECK=false ENV=staging
 
-build-production: clean ## Build project
-	 hugo --gc --minify --environment production
+build-production: clean
+	$(MAKE) build-hugo SKIP_CHECK=false ENV=production
+
+build-hugo:
+	HUGO_PARAMS_ignoresmallcsscheck=$(SKIP_CHECK) hugo --gc --minify --environment $(ENV)
 
 netlify-staging: build-staging ## Build and deploy to Netlify Staging environment
 	npx netlify-cli deploy --alias=staging --dir=public --message="Staging deploy"

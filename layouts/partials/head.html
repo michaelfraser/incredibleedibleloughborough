@@ -16,6 +16,7 @@
 }}
 {{ $css := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "main.scss" . | toCSS $opts | postCSS | minify }}
 
+{{ $isSkipCheck := default false .Site.Params.ignoresmallcsscheck }}
 
 {{/* 14KB Budget Check */}}
 {{ $size := len $css.Content }}
@@ -26,7 +27,7 @@
 {{ end }}
 
 {{/* Minimum Size Check (Ensures Bootstrap isn't missing) */}}
-{{ if lt $size 3000 }}
+{{ if and (lt $size 3000) (not $isSkipCheck) }}
   {{ errorf "⚠️ CSS TOO SMALL: %d bytes. Bootstrap likely failed to bundle." $size }}
 {{ end }}
 
