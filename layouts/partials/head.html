@@ -16,10 +16,13 @@
 }}
 {{ $css := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "main.scss" . | toCSS $opts | postCSS | minify }}
 
+
 {{/* 14KB Budget Check */}}
 {{ $size := len $css.Content }}
 {{ if gt $size 14336 }}
   {{ errorf "⚠️ CSS BUDGET EXCEEDED: %d bytes" $size }}
+{{ else }}
+  {{ warnf "CSS: %d bytes" $size }}
 {{ end }}
 
 {{/* Minimum Size Check (Ensures Bootstrap isn't missing) */}}
@@ -66,7 +69,8 @@
 
 {{ $opts := dict "transpiler" "libsass" "targetPath" "css/_footer.css" }}
 {{ $footerCSS := resources.Get "scss/_footer.scss" | toCSS $opts | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $footerCSS.RelPermalink }}" media="print" onload="this.media='all'">
+<link rel="preload" href="{{ $footerCSS.RelPermalink }}" as="style">
+<link rel="stylesheet" href="{{ $footerCSS.RelPermalink }}" media="all">
 
 {{ $opts := dict "minify" true "target" "es2015" }}
 {{ with resources.Get "js/site.js" | js.Build $opts | fingerprint }}
@@ -84,3 +88,7 @@
     });
   }
 </script>
+
+{{ if eq .RelPermalink "/contact-us/" }}
+  <script src="https://elfsightcdn.com/platform.js" data-use-service-core defer></script>
+{{ end }}
