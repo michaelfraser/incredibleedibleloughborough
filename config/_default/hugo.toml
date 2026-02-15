@@ -48,7 +48,7 @@ enableRobotsTXT = true
       
       # THE FIX: Removed all style hashes. 
       # This allows 'unsafe-inline' to actually work for Elfsight across all pages.
-      Content-Security-Policy = "default-src 'self'; script-src 'self' https://elfsightcdn.com *.elfsightcdn.com https://www.google.com https://www.gstatic.com 'unsafe-inline' 'unsafe-eval' 'unsafe-hashes'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com *.elfsightcdn.com https://www.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: *.elfsightcdn.com; frame-src 'self' *.elfsight.com https://www.google.com; connect-src 'self' *.elfsight.com ws://localhost:1313; object-src 'none'; base-uri 'self'; frame-ancestors 'self';"
+      Content-Security-Policy = "default-src 'self'; script-src 'self' https://elfsightcdn.com *.elfsightcdn.com https://www.google.com https://www.gstatic.com 'unsafe-inline' 'unsafe-eval' 'unsafe-hashes'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com *.elfsightcdn.com https://www.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: *.elfsightcdn.com; frame-src 'self' *.elfsight.com https://www.google.com; connect-src 'self' *.elfsight.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self';"
       
       X-Content-Type-Options = "nosniff"
       X-Frame-Options = "SAMEORIGIN"
@@ -60,5 +60,5 @@ enableRobotsTXT = true
   [[server.headers]]
     for = "/admin/**"
     [server.headers.values]
-      Content-Security-Policy = "default-src 'self'; frame-src 'self' https://identity.netlify.com; frame-ancestors 'self' https://identity.netlify.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://identity.netlify.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' http://localhost:8081 https://unpkg.com https://api.github.com https://identity.netlify.com;"
+      Content-Security-Policy = "default-src 'self'; frame-src 'self' https://identity.netlify.com; frame-ancestors 'self' https://identity.netlify.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://identity.netlify.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://unpkg.com https://api.github.com https://identity.netlify.com;"
       X-Frame-Options = "SAMEORIGIN"  
