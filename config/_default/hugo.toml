@@ -39,6 +39,9 @@ enableRobotsTXT = true
 [[module.mounts]]
   source = "node_modules/bootstrap"
   target = "assets/js/bootstrap"
+  
+[frontmatter]
+  lastmod = ["lastmod", "date", "publishDate", ":fileModTime"]  
 
 [server]
   [[server.headers]]

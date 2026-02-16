@@ -1,6 +1,6 @@
 ---
 title: "Welcome to Incredible Edible Loughborough"
-date: 2025-12-07
+date: 2026-02-16
 description: "Incredible Edible Loughborough sets out to create kind, resilient communities through growing food on land open to the public and sharing that food with all."
 draft: false
 markup: "html"
