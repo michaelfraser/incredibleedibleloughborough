@@ -3,6 +3,7 @@
 .back-to-top {
   display: inline-block;
   position: static;
+  visibility: hidden;
 }
 
 .has-js .back-to-top {
@@ -33,9 +34,7 @@
               opacity 0.25s ease,
               transform 0.2s ease;
   
-  // Hidden by default (before scroll threshold)
   opacity: 0;
-  visibility: hidden;
   pointer-events: none;
   
   &:hover,
