@@ -32,6 +32,13 @@ $nav-speed: 0.2s;
 nav {
     text-transform: uppercase;
     font-family: $font-secondary;
+    position: absolute; 
+    z-index: 1010; 
+    top: 0;
+    left: 0;
+    background: transparent;
+    width: 100%;
+    margin-bottom: 0 !important;
 
     a, .active {
         color: $light-color !important;
@@ -44,6 +51,11 @@ nav {
         text-decoration: none;
         &:hover { text-decoration: underline; }
     }
+
+    a:focus {
+        outline: 2px solid $secondary-color !important;
+        outline-offset: 2px;
+    }    
 
     .active { text-decoration: underline; }
 
@@ -128,6 +140,8 @@ nav {
         overflow-y: auto;
         transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
+        opacity: 1;
+        visibility: visible;
         z-index: 1050;
         
         .nav-link, .active {

@@ -139,20 +139,21 @@ body {
 }
 
 header {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: transparent;
-    color: $light-color;
+    background: transparent !important;
 }
 
 main {
     flex: 1 0 auto;
     position: relative;
-    z-index: 10;
-    margin-top: 0;
-    margin-bottom: 40vh;
+    z-index: 1005;
+    margin-top: 20vh;
+    margin-bottom: 10rem;
+    width: 100%;
 }
 
 h1,
@@ -201,32 +202,33 @@ path {
 
 .image-theme {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
     min-height: 100dvh;
     z-index: 1;
     overflow: hidden;
 
-    &::after, img {
-        content: "";
+    img {
         position: absolute;
         inset: 0;
-        z-index: 2;
-    }
-
-    &::after { background: rgba($black, 0.4); }
-
-    img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: top;
         z-index: 1;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba($black, 0.4); 
+        z-index: 2;
     }
 }
 
 .hero-content {
-    min-height: 55vh;
-    margin-bottom: 45vh;
+    margin-bottom: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -270,7 +272,7 @@ path {
     }
 
     main {
-        margin-bottom: 4rem;
+        // margin-bottom: 4rem;
     }
 }
 
