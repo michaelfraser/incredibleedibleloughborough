@@ -75,6 +75,7 @@ const eventsCollection = {
         { label: "Title", name: "title", widget: "string" },
         { label: "Publish Date", name: "date", widget: "datetime" },
         { label: "Event Date", name: "event_date", widget: "datetime" },
+        { label: "Draft Status", name: "draft", widget: "boolean", default: false },
         { label: "Description", name: "description", widget: "string" },
         { label: "Body", name: "body", widget: "markdown" }
     ]
