@@ -2,7 +2,7 @@
 
 /**
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://elfsightcdn.com *.elfsightcdn.com https://www.google.com https://www.gstatic.com 'unsafe-inline' 'unsafe-eval' 'unsafe-hashes'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com *.elfsightcdn.com https://www.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: *.elfsightcdn.com; frame-src 'self' *.elfsight.com https://www.google.com; connect-src 'self' *.elfsight.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self';
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/ https://elfsightcdn.com *.elfsightcdn.com https://www.google.com https://www.gstatic.com 'unsafe-inline' 'unsafe-eval' 'unsafe-hashes'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css https://fonts.googleapis.com *.elfsightcdn.com https://www.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: *.elfsightcdn.com; frame-src 'self' *.elfsight.com https://www.google.com; connect-src 'self' https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/ *.elfsight.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self';
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
