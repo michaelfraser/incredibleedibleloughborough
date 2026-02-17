@@ -1,9 +1,11 @@
 public
 resources
 node_modules
+output
 
 .netlify
 .vscode
 .hugo_build.lock
+
 hugo_stats.json
 
