@@ -12,8 +12,8 @@ markup: "html"
         <h2 class="text-white">connecting people to nature and each other</h2>
         <p>Incredible Edible Loughborough sets out to create kind, resilient communities through growing food on land open to the public and sharing that food with all</p>
         <p>
-            <a class="btn" href="/our-gardens" target="_self" role="button">GARDENS</a>
-            <a class="btn" href="/about-us" target="_self" role="button">WHO WE ARE</a>
+            <a class="btn" href="/our-gardens/" target="_self" role="button">GARDENS</a>
+            <a class="btn" href="/about-us/" target="_self" role="button">WHO WE ARE</a>
         </p>
     </div>
 </div>
